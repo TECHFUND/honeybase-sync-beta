@@ -5,6 +5,7 @@
     "node-static": "0.5.9",
     "sockjs": "*",
     "redis": "*",
-    "websocket-multiplex": "*"
+    "websocket-multiplex": "*",
+    "express": "*"
   }
 }
