@@ -1,6 +1,6 @@
 (function(global){
   function PubSub(){
-    var sockjs_url = 'http:0.0.0.0:9999/chat';
+    var sockjs_url = 'http://localhost:8001/pubsub';
     var sockjs = new SockJS(sockjs_url);
     var multiplexer = new WebSocketMultiplex(sockjs);
     this.socket = multiplexer.channel('honeybase');
