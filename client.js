@@ -1,30 +1,42 @@
+(function(global){
+  function PubSub(){
+    var sockjs_url = 'http:0.0.0.0:9999/chat';
+    var sockjs = new SockJS(sockjs_url);
+    var multiplexer = new WebSocketMultiplex(sockjs);
+    this.socket = multiplexer.channel('honeybase');
+    this.channels = [];
+  }
+
+  PubSub.prototype.publish = function(channel, value){
+    this.socket.send(JSON.stringify({channel:channel, value: value}));
+  }
+
+  PubSub.prototype.subscribe = function(channel, cb){
+    var self = this;
+    self.channels.push(channel);
+
+    self.socket.onmessage = function(e) {
+      var data = JSON.parse(e.data);
+      var channel = data.channel;
+      var value = data.value;
+
+      if(self.channels.indexOf(channel) != -1) cb(value);
+      else {}
+    };
+  }
+
+  global.PubSub = PubSub;
+  return global;
+}(window));
+
 (function(){
-  var sockjs_url = 'http:0.0.0.0:9999/chat';
-  var sockjs = new SockJS(sockjs_url);
-  var multiplexer = new WebSocketMultiplex(sockjs);
-
-  var io1  = multiplexer.channel('io1');
-  io1.onmessage = function(e) {
-    console.log(JSON.parse(e.data));
-  };
-
-  var io2  = multiplexer.channel('io2');
-  io2.onmessage = function(e) {
-    console.log(JSON.parse(e.data));
-  };
-
-  var io3  = multiplexer.channel('io3');
-  io3.onmessage = function(e) {
-    console.log(JSON.parse(e.data));
-  };
+  var pubsub = new PubSub();
 
   document.getElementById("b1").addEventListener("click", function(e){
-    io1.send(JSON.stringify({content:"hoge1"}));
+    pubsub.publish("hoge", {hoge: "fuga"});
   });
-  document.getElementById("b2").addEventListener("click", function(e){
-    io2.send(JSON.stringify({content:"hoge2"}));
-  });
-  document.getElementById("b3").addEventListener("click", function(e){
-    io3.send(JSON.stringify({content:"hoge3"}));
+
+  pubsub.subscribe("hoge", function(data){
+    console.log(data);
   });
 }());
