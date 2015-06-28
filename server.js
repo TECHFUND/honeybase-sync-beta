@@ -31,7 +31,7 @@ socket.on('connection', function(conn) {
 
 var httpServer = http.createServer();
 service.installHandlers(httpServer, {prefix:'/pubsub'});
-httpServer.listen(8001, 'localhost'); // http://0.0.0.0:9999/chatがwebsocketハンドシェイクのエンドポイント
+httpServer.listen(8001, '0.0.0.0'); // http://0.0.0.0:9999/chatがwebsocketハンドシェイクのエンドポイント
 
 // when data
 redis.on('message', function(channel, rawMsgData) {
