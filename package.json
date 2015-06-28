@@ -7,6 +7,6 @@
     "redis": "*",
     "websocket-multiplex": "*",
     "express": "*",
-    "http-proxy": "*"
+    "http-proxy": "git://github.com/nodejitsu/node-http-proxy#caronte"
   }
 }
