@@ -1,7 +1,5 @@
 # requirement
-- redis
-- nodejs
+- read `fabfile.py`
 
 # how to use
-- npm i
-- node server.js
+- `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H <target_host> default`
