@@ -6,6 +6,7 @@
     "sockjs": "*",
     "redis": "*",
     "websocket-multiplex": "*",
-    "express": "*"
+    "express": "*",
+    "http-proxy": "*"
   }
 }
