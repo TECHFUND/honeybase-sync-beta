@@ -20,7 +20,6 @@ def setup():
 
 def activate():
   with cd("./honeybase-sync-beta"):
-    # sudo("redis-server /etc/redis.hb.conf", warn_only=True)
-    sudo("redis-server /etc/redis.conf", warn_only=True)
+    sudo("redis-server /etc/redis.hb.conf", warn_only=True)
     sudo("npm i", warn_only=True)
     sudo("forever start --killTree true --uid 'main' honeybase-sync.js", warn_only=True)

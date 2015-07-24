@@ -3,7 +3,7 @@
 
 # how to use
 ## install from local
-- `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H <target_host> default`
+- `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp default`
 
 ## run on server
 - `forever start --killTree true --uid 'main' honeybase-sync.js`
