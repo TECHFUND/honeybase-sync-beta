@@ -1,6 +1,6 @@
 var forever = require('forever');
 
-var proxy = forever.start(['node', ',/lib/proxy.js'], {
+var proxy = forever.start(['node', './lib/proxy.js'], {
   max : 10000,
   silent : true
 });
