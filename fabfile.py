@@ -12,6 +12,7 @@ def install():
   sudo("yum install git redis-server nodejs npm --enablerepo=epel -y", warn_only=True)
   sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
   sudo("yum --enablerepo=remi install redis -y", warn_only=True)
+  sudo("npm i -g forever", warn_only=True)
 
 def setup():
   put("./conf/redis.conf", "/etc/redis.hb.conf", use_sudo=True)
