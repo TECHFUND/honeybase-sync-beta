@@ -10,3 +10,7 @@
 
 ## stop on server
 - `forever stopall`
+
+# FYI
+- `watch` (auto relaod) activated
+- `tail -f ~/.forever/XXXX.log` enable you to stream logs.
