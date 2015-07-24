@@ -6,7 +6,7 @@
 - `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp default`
 
 ## run on server
-- `forever start --killTree true --uid 'main' honeybase-sync.js`
+- `forever start --killTree true --uid 'main' -a honeybase-sync.js`
 
 ## stop on server
 - `forever stop main`
