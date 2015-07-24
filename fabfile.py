@@ -1,4 +1,4 @@
-from fabric.api import run, cd, abort, require, sudo, env
+from fabric.api import run, cd, abort, require, sudo, env, put
 from fabric.decorators import runs_once, roles
 from fabric.contrib.console import confirm
 
