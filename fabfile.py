@@ -9,7 +9,7 @@ def default():
   activate()
 
 def install():
-  sudo("yum install git redis-server nodejs npm --enablerepo=epel -y", warn_only=True)
+  sudo("yum install git redis nodejs npm --enablerepo=epel -y", warn_only=True)
   sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
   sudo("yum --enablerepo=remi install redis -y", warn_only=True)
   sudo("npm i -g forever", warn_only=True)
@@ -20,6 +20,7 @@ def setup():
 
 def activate():
   with cd("./honeybase-sync-beta"):
-    sudo("redis-server /etc/redis.hb.conf", warn_only=True)
+    # sudo("redis-server /etc/redis.hb.conf", warn_only=True)
+    sudo("redis-server /etc/redis.conf", warn_only=True)
     sudo("npm i", warn_only=True)
-    sudo("forever start --killTree true --uid 'main' honeybase-sync.js", warn_only=True)
+    sudo("forever start --killTree true --uid 'main' -a honeybase-sync.js", warn_only=True)
