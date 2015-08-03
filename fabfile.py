@@ -1,23 +1,32 @@
-from fabric.api import run, cd, abort, require, sudo, env, put, path
+from fabric.api import task, run, cd, abort, require, sudo, env, put
 from fabric.decorators import runs_once, roles
 from fabric.contrib.console import confirm
+import os, os.path, commands
 
-
+@task(default=True)
 def default():
-  install()
+  install_node()
+  setup()
   activate()
 
-def install():
-  # node
-  sudo("wget http://nodejs.org/dist/v0.12.2/node-v0.12.2-linux-x64.tar.gz")
-  sudo("tar zxvf node-v0.12.2-linux-x64.tar.gz")
-  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/node /usr/bin/node")
-  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm")
+def install_node():
+  print os.path.isdir("/home/ec2-user/node-v0.12.2-linux-x64/")
+  if not os.path.isdir("/home/ex2-user/node-v0.12.2-linux-x64/"):
+    sudo("wget http://nodejs.org/dist/v0.12.2/node-v0.12.2-linux-x64.tar.gz")
+    sudo("tar zxvf node-v0.12.2-linux-x64.tar.gz")
+
+def setup():
+  # symbolic link
+  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/node /usr/bin/node", warn_only=True)
+  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm", warn_only=True)
 
   # git redis forever npm
-  sudo("yum install git redis --enablerepo=epel -y", warn_only=True)
-  sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
-  sudo("yum --enablerepo=remi install redis -y", warn_only=True)
+  yum_result = commands.getoutput("sudo yum list installed | grep redis")
+  if len(yum_result) < 1:
+    sudo("yum install git redis --enablerepo=epel -y", warn_only=True)
+    sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
+    sudo("yum --enablerepo=remi install redis -y", warn_only=True)
+
   sudo("npm i -g forever", warn_only=True)
   sudo("git clone https://github.com/shogochiai/honeybase-sync-beta.git", warn_only=True);
   with cd("./honeybase-sync-beta"):
