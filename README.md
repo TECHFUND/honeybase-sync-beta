@@ -1,24 +1,4 @@
-# requirement
-- read `fabfile.py`
-
-# how to use
-## install from local
-- `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp default`
-
-## run on server
-- `forever start --killTree true --uid 'main' -a honeybase-sync.js`
-
-## stop on server
-- `forever stop main`
-
-# FYI
-- `watch` (auto relaod) activated
-- `tail -f ~/.forever/main.log` enable you to stream logs.
-
-
----
-
-日本語で
+社内マニュアルなので日本語で
 
 # オーケストレーションに必要なもの
 -
