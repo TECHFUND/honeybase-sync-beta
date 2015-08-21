@@ -22,9 +22,9 @@
 - `wget https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea`
 - `wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py`
 - `sudo sh setuptools-0.6c11-py2.7.egg`
-- `python get-pip.py`
-- `pip install pycrypto`
-- `pip install fabric`
+- `sudo python get-pip.py`
+- `sudo pip install pycrypto`
+- `sudo pip install fabric`
 
 
 ### メイン
