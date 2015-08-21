@@ -18,6 +18,16 @@
 
 # オーケストレーションのやり方
 ## ローカルでうつコマンド
+### fabricの準備
+- `wget https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea`
+- `wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py`
+- `sudo sh setuptools-0.6c11-py2.7.egg`
+- `python get-pip.py`
+- `pip install pycrypto`
+- `pip install fabric`
+
+
+### メイン
 - `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp`
 - 目標ホストやpemは毎度任意で変更してください
 - redis-serverの実行でfabricコマンドが停止したらctrl-Cで停止
