@@ -34,7 +34,7 @@
 - sshで目標ホストにログインして、websocketを起動する
 
 ## websocketプロセスをサーバー上で実行させるには
-- `forever start --killTree true --uid 'main' -a honeybase-sync.js`
+- `forever start --killTree true --uid 'main' -a -l /var/log/pubsub_error.log honeybase-sync.js`
 
 ## プロセスの停止
 - `forever stop main`

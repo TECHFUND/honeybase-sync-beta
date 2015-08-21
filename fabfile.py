@@ -23,12 +23,9 @@ def setup():
   sudo("ln -s /home/ec2-user/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm", warn_only=True)
 
   # git redis forever npm
-  yum_result = commands.getoutput("sudo yum list installed | grep redis")
-  if len(yum_result) < 1:
-    sudo("yum install redis --enablerepo=epel -y", warn_only=True)
-    sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
-    sudo("yum --enablerepo=remi install redis -y", warn_only=True)
-
+  sudo("yum install redis --enablerepo=epel -y", warn_only=True)
+  sudo("rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm", warn_only=True)
+  sudo("yum --enablerepo=remi install redis -y", warn_only=True)
   sudo("yum install git --enablerepo=epel -y", warn_only=True)
   sudo("npm i -g forever", warn_only=True)
   sudo("git clone https://github.com/TECHFUND/honeybase-sync-beta.git", warn_only=True);
