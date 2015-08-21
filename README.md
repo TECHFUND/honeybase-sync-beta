@@ -28,7 +28,7 @@
 
 
 ### メイン
-- `fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp`
+- fabfile.pyをローカルに持ってきて、それがおいてあるディレクトリで`fab -i ~/.pem/likeapp-kp1.pem -u ec2-user -H pubsub.techfund.jp`
 - 目標ホストやpemは毎度任意で変更してください
 - redis-serverの実行でfabricコマンドが停止したらctrl-Cで停止
 - sshで目標ホストにログインして、websocketを起動する
