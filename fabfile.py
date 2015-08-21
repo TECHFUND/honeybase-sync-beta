@@ -11,14 +11,14 @@ def default():
 
 def install_node():
   print os.path.isdir("/home/ec2-user/node-v0.12.2-linux-x64/")
-  if not os.path.isdir("/home/ex2-user/node-v0.12.2-linux-x64/"):
-    sudo("wget http://nodejs.org/dist/v0.12.2/node-v0.12.2-linux-x64.tar.gz")
-    sudo("tar zxvf node-v0.12.2-linux-x64.tar.gz")
+  if not os.path.isdir("/home/ec2-user/node-v0.12.2-linux-x64/"):
+    sudo("wget http://nodejs.org/dist/v0.12.2/node-v0.12.2-linux-x64.tar.gz -P /home/ec2-user")
+    sudo("tar zxvf /home/ec2-user/node-v0.12.2-linux-x64.tar.gz")
 
 def setup():
   # symbolic link
-  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/node /usr/bin/node", warn_only=True)
-  sudo("ln -s ~/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm", warn_only=True)
+  sudo("ln -s /home/ec2-user/node-v0.12.2-linux-x64/bin/node /usr/bin/node", warn_only=True)
+  sudo("ln -s /home/ec2-user/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm", warn_only=True)
 
   # git redis forever npm
   yum_result = commands.getoutput("sudo yum list installed | grep redis")
