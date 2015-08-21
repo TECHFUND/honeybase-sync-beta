@@ -17,8 +17,8 @@ def install_node():
 
 def setup():
   # symbolic link
-  sudo("rm /usr/bin/node", warn_only=True)
-  sudo("rm /usr/bin/npm", warn_only=True)
+  sudo("unlink /usr/bin/node", warn_only=True)
+  sudo("unlink /usr/bin/npm", warn_only=True)
   sudo("ln -s /home/ec2-user/node-v0.12.2-linux-x64/bin/node /usr/bin/node", warn_only=True)
   sudo("ln -s /home/ec2-user/node-v0.12.2-linux-x64/bin/npm /usr/bin/npm", warn_only=True)
 
