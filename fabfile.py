@@ -28,7 +28,7 @@ def setup():
     sudo("yum --enablerepo=remi install redis -y", warn_only=True)
 
   sudo("npm i -g forever", warn_only=True)
-  sudo("git clone https://github.com/shogochiai/honeybase-sync-beta.git", warn_only=True);
+  sudo("git clone https://github.com/TECHFUND/honeybase-sync-beta.git", warn_only=True);
   with cd("./honeybase-sync-beta"):
     sudo("npm i", warn_only=True)
 
